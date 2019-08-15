@@ -1,0 +1,11 @@
+<ul [ngClass]="className">
+    <li *ngFor="let menu of items">
+        <a (click)="onMenuClick(menu)" [ngClass]="{'active': selectedItem == menu.Label}">
+            <i class="fa fa-fw" [ngClass]="menu.Icon"></i>
+            {{menu.Label | translate}}
+            <i class="fa right" *ngIf="menu.Childs != null"
+                [ngClass]="{'fa-angle-down': !menu.IsChildVisible,'fa-angle-up': menu.IsChildVisible }"></i>
+        </a>
+        <app-menu *ngIf="menu.Childs != null && menu.IsChildVisible" [items]="menu.Childs"></app-menu>
+    </li>
+</ul>
