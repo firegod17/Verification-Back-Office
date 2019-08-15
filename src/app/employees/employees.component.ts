@@ -29,7 +29,8 @@ export class EmployeesComponent implements OnInit {
 
   pageSize: number;
 
-  main: any[];
+  main:any[]=[];
+  i=0;
 
 
 
@@ -40,13 +41,20 @@ export class EmployeesComponent implements OnInit {
   ngOnInit() {
 
 
-    httpGET("/fields/user",{status: "trust"},(response)=>{
-        this.main=response;
-        console.log(response)
-    });
 
+    httpGET("/fields/user",{status: "trust"},(response)=>{
+        this.main = response;
+        console.log(response);
+        console.log(this.main);
+        for( var i = 0;i<this.main.length;i++) {
+        console.log(this.main[i]);
+        this.employees = this.main;
+        }
+    });
+console.log(this.main);
 
     this.pageSize = 10;
+
 
     this.columns = [
       { field: '_id', header: this.main },
@@ -61,6 +69,8 @@ export class EmployeesComponent implements OnInit {
 
     this.employees = this.employeeService.getEmployeeList();
   }
+
+
 
   goToDepartmentDetails(department: number) {
     this.routeStateService.add("Department details", "/main/departments/department-detail", department, false);
