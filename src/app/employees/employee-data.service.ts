@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { User } from '../core/models/user.model';
+
 
 @Injectable()
 /**
  * employee service
  */
 export class EmployeeDataService {
+
     getEmployeeList() {
         return [
             { Name: 'Nilav', Department: '.net', DepartmentId: 1, Address: 'Ahmedabad, Gujarat', Age: '26' },

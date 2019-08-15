@@ -25,6 +25,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "angular-user-idle": "^2.1.1",
+    "bootstrap": "^4.3.1",
     "chart.js": "^2.7.3",
     "core-js": "^2.5.4",
     "primeflex": "^1.0.0-rc.1",
