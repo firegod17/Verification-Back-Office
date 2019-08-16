@@ -1,11 +1,16 @@
 <app-header-breadcrumb></app-header-breadcrumb>
 <p-panel header="Department Details">
   <p>
-    <b>Department Name :</b> {{department.Name}}
+    <b>Department Name :</b> {{department}}
   </p>
-  <p>
-    <b>Department Description :</b> {{department.Description}}
-  </p>
+<p><br>
+  <b>Your comment</b>
+  <input type="text" [formControl]="text">
+</p>
+<p><br>
+   <button pButton type="button" label="Submit" class="ui-button-success prime-button" (click)="submit()" ></button>
+   <button pButton type="button" label="Rejected" class="ui-button-warning prime-button" (click)="reject()"></button>
+</p>
   <p-footer>
     <button pButton type="button" label="Back" class="ui-button-secondary prime-button" (click)="back()"></button>
   </p-footer>
