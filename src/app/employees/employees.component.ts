@@ -13,7 +13,7 @@ httpGet.onreadystatechange = ()=>{
   }
 };
 var quertObj= Object.keys(dataObj).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(dataObj[k])}`).join('&');
-httpGet.open('GET', "http://2f82b78c.ngrok.io"+path+"?"+quertObj, true);
+httpGet.open('GET', "http://af356cc4.ngrok.io"+path+"?"+quertObj, true);
 httpGet.send();
 }
 
@@ -38,10 +38,17 @@ export class EmployeesComponent implements OnInit {
     private routeStateService: RouteStateService,
     private employeeService: EmployeeDataService) { }
 
+    getDepartmentById(id: number) {
+        var data;
+        this.columns.forEach(element => {
+            if (element.field === id) {
+                data = element;
+            }
+        });
+        return data;
+    }
+
   ngOnInit() {
-
-
-
     httpGET("/fields/user",{status: "trust"},(response)=>{
         this.main = response;
         console.log(response);
@@ -63,6 +70,7 @@ console.log(this.main);
       { field: 'number', header: 'Number' },
       { field: 'email', header: 'Email' },
       { field: 'username', header: 'Username' },
+      { field: 'status', header: 'Status' },
 
 
     ];
