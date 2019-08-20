@@ -3,7 +3,7 @@ import { RouteStateService } from '../core/services/route-state.service';
 import { EmployeeDataService } from './employee-data.service';
 
 function httpGET(path,dataObj,callback){
-var endpoint = "" ;
+var endpoint = "http://alcyone.meta-exchange.info/kyc/api/" ;
 
 var httpGet = new XMLHttpRequest();
 httpGet.onreadystatechange = ()=>{
@@ -13,7 +13,7 @@ httpGet.onreadystatechange = ()=>{
   }
 };
 var quertObj= Object.keys(dataObj).map(k => `${encodeURIComponent(k)}=${encodeURIComponent(dataObj[k])}`).join('&');
-httpGet.open('GET', "http://af356cc4.ngrok.io"+path+"?"+quertObj, true);
+httpGet.open('GET', endpoint+path+"?"+quertObj, true);
 httpGet.send();
 }
 
