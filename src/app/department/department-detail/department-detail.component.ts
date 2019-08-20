@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DepartmentDataService } from '../department-data.service';
 import { Department } from '../../core/models/department.model';
 import { RouteStateService } from '../../core/services/route-state.service';
-import $ = require("jquery");
+
 
 function httpRequest(method,path,dataObj,callback){
     var endpoint = "http://2f82b78c.ngrok.io"

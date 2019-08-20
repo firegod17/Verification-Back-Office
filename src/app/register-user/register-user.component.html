@@ -5,7 +5,7 @@
         <p-panel header="User Registration">
           <div class="p-grid p-justify-center p-align-center">
             <div class="p-xl-6 p-lg-6 p-md-8 p-sm-10">
-              <img src="../assets/images/logo-large.png" class="login-logo">
+              <!-- <img src="../assets/images/logo-large.png" class="login-logo"> -->
             </div>
             <div class="p-col-12">
               <div class="ui-inputgroup">
@@ -39,13 +39,8 @@
               <p-message severity="error" text="Email is required" *ngIf="userform.controls['emailId'].errors['required']"></p-message>
               <p-message severity="error" text="Email is invalid" *ngIf="userform.controls['emailId'].errors['email']"></p-message>
             </div>
-            <div class="p-col-12">
-              <p-calendar formControlName="birthDate" placeholder="Birth date" [showIcon]=true></p-calendar>
-            </div>
-            <div class="p-col-12" *ngIf="userform.controls['birthDate'].errors && userform.controls['birthDate'].dirty">
-              <p-message severity="error" text="Birthdate is required" *ngIf="userform.controls['birthDate'].errors['required']"></p-message>
-              <p-message severity="error" text="Minimum age should be 10 years." *ngIf="userform.controls['birthDate'].errors['invalidBirthDate']"></p-message>
-            </div>
+
+
           </div>
           <p-footer>
             <div class="p-grid">
