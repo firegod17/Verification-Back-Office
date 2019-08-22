@@ -53,11 +53,15 @@ export class EmployeesComponent implements OnInit {
         this.main = response;
         console.log(response);
         console.log(this.main);
-        for( var i = 0;i<this.main.length;i++) {
+        for( var i = 1;i<this.main.length;i++) {
         console.log(this.main[i]);
         this.employees = this.main;
+
+        this.employees = this.employeeService.getEmployeeList();
         }
     });
+
+
 console.log(this.main);
 
     this.pageSize = 10;
@@ -71,11 +75,12 @@ console.log(this.main);
       { field: 'email', header: 'Email' },
       { field: 'username', header: 'Username' },
       { field: 'status', header: 'Status' },
+      { field: 'DocsStatus', header: 'Docs' },
 
 
     ];
 
-    this.employees = this.employeeService.getEmployeeList();
+
   }
 
 
