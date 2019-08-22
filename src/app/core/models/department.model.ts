@@ -1,10 +1,10 @@
 export class Department{
     constructor(){
-        this.Id = null;
-        this.Name = null;
-        this.Description = null;
+        this._id = null;
+        this.firstName = null;
+        this.lastName = null;
     }
-    Id : number;
-    Name : string;
-    Description: string;
+    _id : number;
+    firstName : string;
+    lastName: string;
 }

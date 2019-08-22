@@ -15,8 +15,8 @@
         <ng-template pTemplate="body" let-employee>
             <tr>
                 <td *ngFor="let col of columns">
-                    <div *ngIf="col.field != 'Department'">{{employee[col.field]}}</div>
-                    <div *ngIf="col.field == 'Department'"><a (click)="goToDepartmentDetails(employee.DepartmentId)">{{employee[col.field]}}</a></div>
+                    <div *ngIf="col.field != 'status'">{{employee[col.field]}}</div>
+                    <div *ngIf="col.field == 'status'"><a (click)="goToDepartmentDetails(1)">{{employee[col.field]}}</a></div>
                 </td>
             </tr>
         </ng-template>
