@@ -10,8 +10,8 @@ export class EmployeeDataService {
 
     getEmployeeList() {
         return [
-          { _id: "5d5580ae7c213e60b8eff18f", firstName: "Mix", lastName: "Max", email: "bohdan@meta1.io", status:'trust', DocsStatus:'update'},
-            // { Name: 'Nilav', Department: '.net', DepartmentId: 1, Address: 'Ahmedabad, Gujarat', Age: '26' },
+          // { _id: "5d5580ae7c213e60b8eff18f", firstName: "Mix", lastName: "Max", email: "bohdan@meta1.io", status:'trust', DocsStatus:'update'},
+          //   // { Name: 'Nilav', Department: '.net', DepartmentId: 1, Address: 'Ahmedabad, Gujarat', Age: '26' },
             // { Name: 'Nilav1', Department: '.net', DepartmentId: 1, Address: 'Surat, Gujarat', Age: '25' },
             // { Name: 'Nilav2', Department: 'PHP', DepartmentId: 4, Address: 'Ahmedabad, Gujarat', Age: '25' },
             // { Name: 'Nilav3', Department: '.net', DepartmentId: 1, Address: 'Ahmedabad, Gujarat', Age: '30' },
