@@ -87,6 +87,8 @@ export class DepartmentDetailComponent implements OnInit {
     this.department = this.departmentService.getDepartmentById(routeState.data);
     console.log(this.text);
     this.title = routeState.title;
+    console.log(routeState);
+
 
 
 
@@ -127,7 +129,7 @@ export class DepartmentDetailComponent implements OnInit {
       })
     }else if (this.title=="Document Status"){
       var dataObj={
-      userId:'5d55413393a5416114a113df',
+      userId:'5d65373ed5fd797cc80d6c90',
       status:"docRejected",
       text: this.text.value
       }
@@ -152,7 +154,7 @@ export class DepartmentDetailComponent implements OnInit {
       })
     }else if (this.title=="Document Status"){
       var dataObj={
-      userId:'5d55413393a5416114a113df',
+      userId:'5d65373ed5fd797cc80d6c90',
       status:"docSubmited",
       text:"Your Docs has been submitted<br>"+
           "Please go back and continue registration"

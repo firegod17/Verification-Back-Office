@@ -9,7 +9,7 @@ export class DepartmentDataService {
 
     constructor() {
         this.departments = [
-            { Id: 1, Name: ".net", Description: ".Net" },
+            { Id: 1, Name: "trust", Description: "trust" },
             { Id: 2, Name: "HR", Description: "HR" },
             { Id: 3, Name: "Admin", Description: "Admin" },
             { Id: 4, Name: "PHP", Description: "PHP" }];
@@ -29,7 +29,7 @@ export class DepartmentDataService {
         return data;
     }
 
-    getDepartmentByName(name: string) {        
+    getDepartmentByName(name: string) {
         var data;
         this.departments.forEach(element => {
             if (element.Name === name) {
