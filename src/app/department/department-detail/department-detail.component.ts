@@ -76,6 +76,7 @@ export class DepartmentDetailComponent implements OnInit {
   department: Department;
   title: String;
   visibility: boolean = true;
+  userId:string;
 
 
   constructor(
@@ -87,7 +88,10 @@ export class DepartmentDetailComponent implements OnInit {
     this.department = this.departmentService.getDepartmentById(routeState.data);
     console.log(this.text);
     this.title = routeState.title;
-    console.log(routeState);
+    this.userId = routeState.data;
+
+
+
 
 
 
@@ -95,8 +99,10 @@ export class DepartmentDetailComponent implements OnInit {
 
     //Get trust
     if (routeState.title==="Trust Status"){
-      httpGET("/fields/trust",{userId:'5d5580ae7c213e60b8eff18f'},(response)=>{
+
+      httpGET("/fields/trust",{userId:this.userId},(response)=>{
           document.getElementById("json").innerHTML  = JSON.stringify(response, null, 4);
+
 
 
 
@@ -120,16 +126,18 @@ export class DepartmentDetailComponent implements OnInit {
 
     if(this.title==="Trust Status"){
       var dataObj={
-      userId:'5d5580ae7c213e60b8eff18f',
+
+      userId:this.userId,
       status:"trustRejected",
       text: this.text.value
       }
+
       httpRequest("POST",'/status',dataObj,(response)=>{
           console.log(response)
       })
     }else if (this.title=="Document Status"){
       var dataObj={
-      userId:'5d65373ed5fd797cc80d6c90',
+      userId:this.userId,
       status:"docRejected",
       text: this.text.value
       }
@@ -144,8 +152,8 @@ export class DepartmentDetailComponent implements OnInit {
   submit(){
     if(this.title==="Trust Status"){
       var dataObj={
-      userId:'5d5580ae7c213e60b8eff18f',
-      status:"trustSubmited",
+      userId:this.userId,
+      status:"trustSubmitted",
       text:"Your Trust has been submitted<br>"+
           "Please go back and continue registration"
       }
@@ -154,8 +162,8 @@ export class DepartmentDetailComponent implements OnInit {
       })
     }else if (this.title=="Document Status"){
       var dataObj={
-      userId:'5d65373ed5fd797cc80d6c90',
-      status:"docSubmited",
+      userId:this.userId,
+      status:"docSubmitted",
       text:"Your Docs has been submitted<br>"+
           "Please go back and continue registration"
       }
@@ -167,6 +175,6 @@ export class DepartmentDetailComponent implements OnInit {
     docOpen(){
       var	endpoint = 'http://alcyone.meta-exchange.info/kyc/api';
    // httpGET('/data/doc',{userId:'5d55413393a5416114a113df',method:"download"});
-  window.open(endpoint+'/data/doc?userId='+'5d55413393a5416114a113df')
+  window.open(endpoint+'/data/doc?userId='+ this.userId)
     }
 }

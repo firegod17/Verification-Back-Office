@@ -22,7 +22,7 @@
 
                     <div *ngIf="col.field != 'status'">{{employee[col.field]}}</div>
 
-                    <div *ngIf="col.field == 'status'"><a (click)="goToDepartmentDetails()">{{employee[col.field]}}</a></div>
+                    <div *ngIf="col.field == 'status'"><a (click)="goToDepartmentDetails(employee._id)">{{employee[col.field]}}</a></div>
                     <!-- <div *ngIf="col.field == 'DocsStatus'"><a (click)="goToDepartmentDetails(2)">{{employee[col.field]}}</a></div> -->
                 </td>
             </tr>
