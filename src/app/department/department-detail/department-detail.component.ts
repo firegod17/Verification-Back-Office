@@ -35,7 +35,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 function httpRequest(method,path,dataObj,callback){
     var endpoint = "http://alcyone.meta-exchange.info/kyc/api"
     var httpPost = new XMLHttpRequest();
-
+    var idUser = null;
     httpPost.onload = function(err) {
         if (httpPost.readyState == 4 && httpPost.status == 200){
             var response=JSON.parse(httpPost.responseText)//here you will get uploaded image id
@@ -50,8 +50,8 @@ function httpRequest(method,path,dataObj,callback){
 }
 
 function httpGET(path,dataObj,callback){
-    var endpoint = "http://alcyone.meta-exchange.info/kyc/api"
-
+    let page = "doc";
+    var endpoint = "http://alcyone.meta-exchange.info/kyc/api";
     var httpGet = new XMLHttpRequest();
     httpGet.onreadystatechange = ()=>{
       if (httpGet.readyState == 4 && httpGet.status == 200) {
@@ -74,6 +74,8 @@ function httpGET(path,dataObj,callback){
 export class DepartmentDetailComponent implements OnInit {
   text = new FormControl('');
   department: Department;
+  title: String;
+  visibility: boolean = true;
 
 
   constructor(
@@ -84,41 +86,85 @@ export class DepartmentDetailComponent implements OnInit {
     var routeState = this.routeStateService.getCurrent();
     this.department = this.departmentService.getDepartmentById(routeState.data);
     console.log(this.text);
+    this.title = routeState.title;
+
 
 
 
     //Get trust
-    httpGET("/fields/trust",{userId:'5d5580ae7c213e60b8eff18f'},(response)=>{
-        document.getElementById("json").innerHTML  = JSON.stringify(response, null, 4);
-    })
+    if (routeState.title==="Trust Status"){
+      httpGET("/fields/trust",{userId:'5d652f54d696a079bcdbf43d'},(response)=>{
+          document.getElementById("json").innerHTML  = JSON.stringify(response, null, 4);
+
+
+
+
+      })
+    }else if (routeState.title==="Document Status"){
+      this.visibility=!this.visibility;
+      // httpGET("/data/doc",{userId:'5d5580ae7c213e60b8eff18f'},(response)=>{
+      //     document.getElementById("json").innerHTML  = JSON.stringify(response, null, 4);
+
+      }
   }
 
   back() {
+
     this.routeStateService.loadPrevious();
+    // trust();
   }
 
   reject(){
-    var dataObj={
-    userId:'5d5580ae7c213e60b8eff18f',
-    status:"trustRejected",
-    text: this.text.value
-    }
-    httpRequest("POST",'/status',dataObj,(response)=>{
+
+    if(this.title==="Trust Status"){
+      var dataObj={
+      userId:'5d65373ed5fd797cc80d6c90',
+      status:"trustRejected",
+      text: this.text.value
+      }
+      httpRequest("POST",'/status',dataObj,(response)=>{
+          console.log(response)
+      })
+    }else if (this.title=="Document Status"){
+      var dataObj={
+      userId:'5d65373ed5fd797cc80d6c90',
+      status:"docRejected",
+      text: this.text.value
+      }
+      httpRequest("POST",'/status',dataObj,(response)=>{
         console.log(response)
-    })
+      })
+    }
   }
 
 
 
   submit(){
-    var dataObj={
-    userId:'5d5580ae7c213e60b8eff18f',
-    status:"trustSubmited",
-    text:"Your Trust has been submitted<br>"+
-        "Please go back and continue registration"
+    if(this.title==="Trust Status"){
+      var dataObj={
+      userId:'5d65373ed5fd797cc80d6c90',
+      status:"trustSubmitted",
+      text:"Your Trust has been submitted<br>"+
+          "Please go back and continue registration"
+      }
+      httpRequest("POST",'/status',dataObj,(response)=>{
+          console.log(response)
+      })
+    }else if (this.title=="Document Status"){
+      var dataObj={
+      userId:'5d65373ed5fd797cc80d6c90',
+      status:"docSubmitted",
+      text:"Your Docs has been submitted<br>"+
+          "Please go back and continue registration"
+      }
+      httpRequest("POST",'/status',dataObj,(response)=>{
+          console.log(response)
+      })
     }
-    httpRequest("POST",'/status',dataObj,(response)=>{
-        console.log(response)
-    })
-  }
+    }
+    docOpen(){
+      var	endpoint = 'http://alcyone.meta-exchange.info/kyc/api';
+   // httpGET('/data/doc',{userId:'5d55413393a5416114a113df',method:"download"});
+  window.open(endpoint+'/data/doc?userId='+'5d55413393a5416114a113df')
+    }
 }

@@ -41,6 +41,7 @@ export class EmployeesComponent implements OnInit {
     getDepartmentById(id: number) {
         var data;
         this.columns.forEach(element => {
+          console.log(element.field);
             if (element.field === id) {
                 data = element;
             }
@@ -49,16 +50,10 @@ export class EmployeesComponent implements OnInit {
     }
 
   ngOnInit() {
-    httpGET("/fields/user",{status: "trust"},(response)=>{
-        this.main = response;
-        console.log(response);
-        console.log(this.main);
-        for( var i = 0;i<this.main.length;i++) {
-        console.log(this.main[i]);
-        this.employees = this.main;
-        }
-    });
-console.log(this.main);
+
+
+
+// console.log(this.main);
 
     this.pageSize = 10;
 
@@ -71,16 +66,50 @@ console.log(this.main);
       { field: 'email', header: 'Email' },
       { field: 'username', header: 'Username' },
       { field: 'status', header: 'Status' },
+      // { field: 'trustId', header: 'Trust' },
+      // { field: 'dataId', header: 'Dataid' },
+
+
+
 
 
     ];
 
-    this.employees = this.employeeService.getEmployeeList();
+
+
+  }
+  trust(){
+    httpGET("/fields/user",{status: "trust"},(response)=>{
+        this.main = response;
+        console.log(response);
+        console.log(this.main);
+        this.employees = this.main;
+
+        // for( var i = 1;i<this.main.length;i++) {
+        // console.log(this.main[i]);
+        // this.employees = this.main;
+        //
+        // // this.employees = this.employeeService.getEmployeeList();
+        // }
+          // console.log(this.main["0"].status);
+    });
   }
 
 
 
-  goToDepartmentDetails(department: number) {
-    this.routeStateService.add("Department details", "/main/departments/department-detail", department, false);
+  goToDepartmentDetails(department: String) {
+    // var id = this.main.fields.id;
+
+          if (this.main["0"].status == 'docUpdated'){
+
+
+            this.routeStateService.add("Document Status", "/main/departments/department-detail", department, false);
+          }
+          if (this.main["0"].status == 'trust'){
+
+
+            this.routeStateService.add("Trust Status", "/main/departments/department-detail", department,  false);
+          }
+
   }
 }
