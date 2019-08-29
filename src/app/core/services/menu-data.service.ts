@@ -16,9 +16,9 @@ export class MenuDataService {
             {
                 Label: 'Departments', Icon: 'fa-sitemap', RouterLink: '/main/departments', Childs: null, IsChildVisible: false
             },
-          
+
             {
-                Label: 'Menu Level 1', Icon: 'fa-cart-plus', RouterLink: null, Childs: [
+                Label: 'Menu Level 1', RouterLink: null, Childs: [
                     { Label: 'Menu Level 1.1', RouterLink: null, Childs: null, IsChildVisible: false },
                     {
                         Label: 'Menu Level 1.2', RouterLink: null, IsChildVisible: false, Childs: [
