@@ -25,7 +25,7 @@ httpGet.send();
 export class EmployeesComponent implements OnInit {
   columns: any[];
 
-  employees: any[];
+  employee: any[];
 
   pageSize: number;
 
@@ -81,7 +81,7 @@ export class EmployeesComponent implements OnInit {
         this.main = response;
         console.log(response);
         console.log(this.main);
-        this.employees = this.main;
+        this.employee = this.main;
         // for( var i = 1;i<this.main.length;i++) {
         // console.log(this.main[i]);
         // this.employees = this.main;
@@ -97,7 +97,7 @@ export class EmployeesComponent implements OnInit {
         this.main = response;
         console.log(response);
         console.log(this.main);
-        this.employees = this.main;
+        this.employee = this.main;
   });
 }
 

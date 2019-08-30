@@ -72,6 +72,8 @@ function httpGET(path,dataObj,callback){
   styleUrls: ['./department-detail.component.css']
 })
 export class DepartmentDetailComponent implements OnInit {
+  columns: any[];
+  content: any[];
   text = new FormControl('');
   department: Department;
   title: String;
@@ -79,11 +81,18 @@ export class DepartmentDetailComponent implements OnInit {
   userId:string;
 
 
+
   constructor(
     private departmentService: DepartmentDataService,
     private routeStateService: RouteStateService) { }
 
   ngOnInit() {
+
+        this.columns = [
+          { field: '_id', header: this.content },
+          { field: 'trustName', header: 'Trust Name' },
+          ];
+
     var routeState = this.routeStateService.getCurrent();
     this.department = this.departmentService.getDepartmentById(routeState.data);
     console.log(this.text);
@@ -102,6 +111,9 @@ export class DepartmentDetailComponent implements OnInit {
 
       httpGET("/fields/trust",{userId:this.userId},(response)=>{
           document.getElementById("json").innerHTML  = JSON.stringify(response, null, 4);
+          // this.content = response;
+          // console.log(this.content);
+          // document.getElementById("json").innerText  = JSON.stringify(response, null, 4);
 
 
 

@@ -7,7 +7,7 @@
         <div class="ui-g-10 ui-sm-8"><label style="float:right;">Page Size:</label></div>
         <div class="ui-g-2 ui-sm-4"><input type="text" pInputText [(ngModel)]="pageSize"></div>
     </div>
-    <p-table [value]="employees" [paginator]="true" [rows]="pageSize" id="employee">
+    <p-table [value]="employee" [paginator]="true" [rows]="pageSize" id="employee">
         <ng-template pTemplate="header">
             <tr>
                 <th *ngFor="let col of columns">
