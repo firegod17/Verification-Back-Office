@@ -1,6 +1,6 @@
 # Verification-Back-Office
 
-Cick platform for Verification on Meta1
+Backoffice for client KYC; 
 
 </div>
 
