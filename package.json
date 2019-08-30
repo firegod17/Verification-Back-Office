@@ -9,7 +9,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start": "ng serve --port 4010"
+    "start": "ng serve  --port 4010 --disable-host-check"
   },
   "private": false,
   "dependencies": {

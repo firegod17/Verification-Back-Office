@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Ng-Prime';
+  title = 'Backoffiice';
   showLoader: boolean;
   theme: string;
 
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
       this.theme = theme;
       this.themeService.selectTheme(theme);
     } else {
-      this.theme = "dark-theme";
+      this.theme = "light-theme";
     }
 
     // this language will be used as a fallback when a translation isn't found in the current language
