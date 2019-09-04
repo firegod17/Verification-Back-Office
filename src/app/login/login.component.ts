@@ -31,15 +31,15 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.userName = "";
-    this.password = "";    
+    this.password = "";
     this.locale = this.sessionService.getItem("ng-prime-language");
   }
 
-  onClickLogin() {    
+  onClickLogin() {
     let user: User = this.userService.getUserByUserNameAndPassword(this.userName, this.password);
     if (user) {
       this.userContextService.setUser(user);
-      this.routeStateService.add("Dashboard", '/main/dashboard', null, true);
+      this.routeStateService.add("Employees", '/main/employees', null, true);
       return;
     }
     this.toastService.addSingle('error', '', 'Invalid user.');

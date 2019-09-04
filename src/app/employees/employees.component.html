@@ -1,7 +1,12 @@
 <app-header-breadcrumb></app-header-breadcrumb>
 <p-panel header="Employees List">
-  <button type="button " class="btn btn-dark"  (click)="trust()">Trust</button>
-  <button type="button" class="btn btn-dark button_doc" (click)="docStatus()">Document status</button>
+
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" (click)="onButtonGroupClick($event)">
+    <button type="button " class="btn btn-dark"  (click)="trust()">Trust</button>
+    <button type="button" class="btn btn-dark button_doc" (click)="docStatus()">Document status</button>
+  
+</div>
+
   <!-- <button type="button" class="btn btn-dark button_doc" (click)="GetCellValues()">status</button> -->
     <div class="ui-g">
         <div class="ui-g-10 ui-sm-8"><label style="float:right;">Page Size:</label></div>

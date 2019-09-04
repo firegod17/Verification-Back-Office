@@ -9,7 +9,7 @@ export class DepartmentDataService {
 
     constructor() {
         this.departments = [
-            { Id: 1, Name: "trust", Description: "trust" },
+            { _id: 1, trustName: "trust" },
             { Id: 2, Name: "HR", Description: "HR" },
             { Id: 3, Name: "Admin", Description: "Admin" },
             { Id: 4, Name: "PHP", Description: "PHP" }];

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { RouteStateService } from '../core/services/route-state.service';
 import { EmployeeDataService } from './employee-data.service';
 
@@ -100,6 +100,21 @@ export class EmployeesComponent implements OnInit {
         this.employee = this.main;
   });
 }
+onButtonGroupClick($event){
+   let clickedElement = $event.target || $event.srcElement;
+
+   if( clickedElement.nodeName === "BUTTON" ) {
+
+     let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
+     // if a Button already has Class: .active
+     if( isCertainButtonAlreadyActive ) {
+       isCertainButtonAlreadyActive.classList.remove("active");
+     }
+
+     clickedElement.className += " active";
+   }
+
+ }
 
 
 

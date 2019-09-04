@@ -46,7 +46,7 @@ export class MenuComponent implements OnInit {
         this.selectedItem = menu.Label;
         this.sessionService.setItem("active-menu", menu.Label);
         this.routeStateService.add(menu.Label, menu.RouterLink, null, true);
-        // hide menu bar after menu click for mobile layout        
+        // hide menu bar after menu click for mobile layout
         setTimeout(() => {
             this.closeClicked.emit(false);
         }, 100);

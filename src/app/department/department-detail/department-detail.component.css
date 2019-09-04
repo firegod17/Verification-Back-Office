@@ -3,3 +3,19 @@
 }
 
  .invisible{display:none;}
+
+.json-trust{
+  margin-left: 40px;
+}
+
+#warning-button{
+  margin-left: 10px;
+}
+
+#back-button{
+  margin-left: 10px;
+}
+
+.colortext {
+     color: red; /* Красный цвет выделения */
+   }

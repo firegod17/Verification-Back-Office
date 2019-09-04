@@ -1,10 +1,64 @@
 <app-header-breadcrumb></app-header-breadcrumb>
 <p-panel header="Trust Details">
+<b>Trust Info :</b><br><br>
+<div [ngClass]="{invisible: !visibilit}">
 
 
-    <b>Trust Info :</b>
+
+<div class="row" >
+
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" >
+  <div *ngIf="!condition ">
+
+    <ul class="list-group list-trust">
+  <li class="list-group-item"><span class="colortext">Trust Name -</span> {{contents.trustName}}</li>
+  <li class="list-group-item"><span class="colortext">Trust id -</span> {{contents._id}}</li>
+  <li class="list-group-item"><span class="colortext">Trust Email -</span> {{contents.email}}</li>
+  <li class="list-group-item"><span class="colortext">User Id -</span> {{contents.userId}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor firstName -</span> {{contents.grantor.firstName}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor lastName -</span> {{contents.grantor.lastName}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor address -</span> {{contents.grantor.Address}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor address2 -</span> {{contents.grantor.Address2}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor city -</span> {{contents.grantor.city}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor state -</span> {{contents.grantor.state}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor zip -</span> {{contents.grantor.zip}}</li>
+  <li class="list-group-item"><span class="colortext">Grantor email -</span> {{contents.grantor.email}}</li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'> <span class="colortext">Administrators lastName -</span> {{content.lastName}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'> <span class="colortext">Administrators Address -</span> {{content.Address1}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'><span class="colortext"> Administrators firstName -</span>{{content.firstName}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'><span class="colortext"> Administrators Address2 -</span> {{content.Address2}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'> <span class="colortext"> Administrators city -</span> {{content.city}} ,</td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'><span class="colortext"> Administrators state -</span> {{content.state}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'><span class="colortext"> Administrators zip -</span> {{content.postalCode}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content of contents.administrators'><span class="colortext"> Administrators email -</span> {{content.email}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content1 of contents.beneficiaries'><span class="colortext"> Beneficiaries FullName -</span> {{content1.FullName}} ,  </td></li>
+  <li class="list-group-item">  <td *ngFor='let content1 of contents.beneficiaries'><span class="colortext"> Beneficiaries email -</span> {{content1.email}} ,  </td></li>
+
+
+</ul>
+</div>
+
+</div>
+<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5 json-trust">
+  <b>Trust Info in JSON :</b>
     <pre id="json"></pre>
-    {{department}}
+</div>
+</div>
+</div>
+    <!-- <p-table [value]="getData()">
+        <ng-template pTemplate="header">
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
+                <td class="legend-cell" >
+                    {{data.className}}
+                </td>
+                <td class="non-edit-cell" >
+                    {{data.numStudents}}
+                </td>
+            </tr>
+        </ng-template>
+    </p-table> -->
 <!-- <div class="butoon">
     <button pButton type="button" label="Submit" class="ui-button-success prime-button" (click)="" ></button>
 </div> -->
@@ -16,12 +70,14 @@
 
 
 <p><br>
-  <b>Your comment</b>
+  <b>Your comment:</b>
+  <br><br>
   <input type="text" [formControl]="text">
 </p>
   <p-footer>
+
     <button pButton type="button" label="Submit" class="ui-button-success prime-button" (click)="submit()" ></button>
-    <button pButton type="button" label="Rejected" class="ui-button-warning prime-button" (click)="reject()"></button>
-    <button pButton type="button" label="Back" class="ui-button-secondary prime-button" (click)="back()"></button>
+    <button pButton type="button" label="Rejected" class="ui-button-warning prime-button " id="warning-button" (click)="reject()"></button>
+    <button pButton type="button" label="Back" class="ui-button-secondary prime-button" id="back-button" (click)="back()"></button>
   </p-footer>
 </p-panel>
